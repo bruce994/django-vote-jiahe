@@ -1,0 +1,1 @@
+Fri, 26 Jan 2018 17:04:27 wxpayClass.py[line:95] INFO {'result_code': 'SUCCESS', 'sign': '8BAA1F7E62239951278148444A607DAA', 'trade_type': 'JSAPI', 'return_msg': 'OK', 'nonce_str': 'sEE7U2QsCQqrXLks', 'return_code': 'SUCCESS', 'appid': 'wx13e6c03005b32716', 'prepay_id': 'wx20180126170427a1f0bf40c50824103236', 'mch_id': '1487756232'}
