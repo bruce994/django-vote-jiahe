@@ -33,7 +33,7 @@ from vote import wxpayClass
 
 def vote_list(request):
     mid = request.GET.get('mid',0)
-    latest_list = Vote.objects.filter( Q(status=1)).order_by('-pub_date') 
+    latest_list = Vote.objects.filter( Q(status=1)).order_by('-pub_date')
     paginator = Paginator(latest_list, 10)
     page = request.GET.get('page')
     try:
@@ -205,11 +205,11 @@ def sign_post(request):
             objects.image3 = img
         elif idx == 4:
             objects.image4 = img
-    try:
-    	tmp = Form.objects.filter(Q(vid = vid)).aggregate(Max('num'))
-    	objects.num = tmp['num__max'] + 1
-    except ObjectDoesNotExist:
-    	objects.num = 1
+    tmp = Form.objects.filter(Q(vid = vid)).aggregate(Max('num'))
+    if tmp['num__max'] is None:
+        objects.num = 1
+    else:
+        objects.num = tmp['num__max'] + 1
     if vote['sign_status'] == 0:
         status = 1
     else :
