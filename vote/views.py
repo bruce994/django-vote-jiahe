@@ -124,7 +124,7 @@ def rank(request):
     ad = Ad.objects.filter(vid = vid).order_by('-pub_date')
     ad_json  = serializers.serialize('json',ad)
 
-    latest_list = Form.objects.filter(vid = vid).order_by('-ticket')
+    latest_list = Form.objects.filter(Q(vid = vid) & Q(status = 1)).order_by('-ticket')
     paginator = Paginator(latest_list, 10)
     page = request.GET.get('page')
     try:
