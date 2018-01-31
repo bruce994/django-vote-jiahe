@@ -78,7 +78,7 @@ def index(request):
     ad = Ad.objects.filter(vid = vid).order_by('-pub_date')
     ad_json  = serializers.serialize('json',ad)
 
-    data = '{"misc":'+json.dumps(data1)+',"ad":'+ad_json+',"vote":'+vote_json[1:-1]+',"list":'+latest_list_json+'}'
+    data = '{"auditd_check":0,"misc":'+json.dumps(data1)+',"ad":'+ad_json+',"vote":'+vote_json[1:-1]+',"list":'+latest_list_json+'}'
     return HttpResponse(data, content_type='json')
 
 
@@ -205,8 +205,11 @@ def sign_post(request):
             objects.image3 = img
         elif idx == 4:
             objects.image4 = img
-    tmp = Form.objects.filter(Q(vid = vid)).aggregate(Max('num'))
-    objects.num = tmp['num__max'] + 1
+    try:
+    	tmp = Form.objects.filter(Q(vid = vid)).aggregate(Max('num'))
+    	objects.num = tmp['num__max'] + 1
+    except ObjectDoesNotExist:
+    	objects.num = 1
     if vote['sign_status'] == 0:
         status = 1
     else :
