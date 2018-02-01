@@ -78,7 +78,7 @@ def index(request):
     ad = Ad.objects.filter(vid = vid).order_by('-pub_date')
     ad_json  = serializers.serialize('json',ad)
 
-    data = '{"auditd_check":0,"misc":'+json.dumps(data1)+',"ad":'+ad_json+',"vote":'+vote_json[1:-1]+',"list":'+latest_list_json+'}'
+    data = '{"auditd_check":1,"misc":'+json.dumps(data1)+',"ad":'+ad_json+',"vote":'+vote_json[1:-1]+',"list":'+latest_list_json+'}'
     return HttpResponse(data, content_type='json')
 
 
