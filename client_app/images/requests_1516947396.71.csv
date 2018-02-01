@@ -1,0 +1,3 @@
+"Method","Name","# requests","# failures","Median response time","Average response time","Min response time","Max response time","Average Content Size","Requests/s"
+"GET","/vote/vote_list/",10813,204,260,759,54,9312,973,90.42
+"None","Total",10813,204,260,759,54,9312,973,90.42

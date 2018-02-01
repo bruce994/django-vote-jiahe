@@ -1,0 +1,76 @@
+
+<view class="message">
+  <text class="title">通知：</text>
+  <view class="message_box">
+    <view>{{vote.fields.message}}}</view>
+  </view>
+</view>
+
+
+<swiper  indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-dots="true">
+  <block wx:for="{{ad}}" wx:for-index="idx"  wx:for-item="item"  wx:key="{{item.pk}}"  >
+    <swiper-item>
+      <image mode="aspectFill" src="{{media}}{{item.fields.image}}" class="slide-image" />
+    </swiper-item>
+  </block>
+</swiper>
+
+
+<view class="box">
+  <image src='{{media}}{{detail.fields.image0}}' class="head"></image>
+  <text class="name">{{detail.fields.username}}</text>
+  <view class="box1">
+    <view class="picbox">
+      <view>
+        <image src='/images/d1.png'></image>
+        <text>编号</text>
+      </view>
+      <view>{{detail.fields.num}}</view>
+    </view>
+    <view  class="picbox">
+      <view>
+        <image src='/images/d2.png'></image>
+        <text>票数</text>
+      </view>
+      <view>{{detail.fields.ticket}}</view>
+    </view>
+    <view  class="picbox">
+      <view>
+        <image src='/images/d3.png'></image>
+        <text>排名</text>
+      </view>
+      <view>{{misc.rank}}</view>
+    </view>
+  </view>
+</view>
+<view class="box3">
+
+  <view class="title">宣言：{{detail.fields.info}}</view>
+
+
+  <swiper style="height:{{img_height}}rpx" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{photo}}" wx:for-index="idx"  wx:for-item="item"  wx:key="{{item}}" >
+      <swiper-item>
+        <image mode="widthFix" src="{{media}}{{item}}" class="slide-image-pic" bindload="imageLoad" />
+      </swiper-item>
+    </block>
+  </swiper>
+
+
+  <view class="btn" bindtap='goSign'>我要报名</view>
+</view>
+<view class="box4">
+  <view class="btn_box left" bindtap="goVote"  >
+    <image src='/images/b1.jpg'></image>
+    <text>给ta投票</text>
+  </view>
+  <view class="btn_box right" >
+    <image src='/images/index.png'></image>
+    <button size="mini" plain="true" bindtap="goDefault" style="border:0px;padding:0px;line-height:1.3;color:#989898;font-size:25rpx;top:8rpx;">返回首页</button>
+  </view>
+  <view class="btn_send" bindtap="goSend">
+    <image src='/images/zs.png'></image>
+    <view>送钻石</view>
+  </view>
+</view>

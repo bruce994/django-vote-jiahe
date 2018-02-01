@@ -1,0 +1,186 @@
+swiper{
+  width: 100%;
+  height: 400rpx;
+}
+page{
+  padding-bottom: 60rpx;
+  background: white;
+}
+swiper image{
+  width: 100%;
+  height: 100%;
+}
+.box1{
+  padding: 30rpx 0;
+  background: #f9f9f9;
+  display: flex;
+}
+.box1 .tabs{
+  width: 33.33%;
+  text-align: center;
+  color: #989898;
+  font-size: 28rpx;
+}
+.box1 .tabs:nth-child(2),.box1 .tabs:nth-child(3){
+  border-left: 1rpx solid #cccccc;
+}
+.box1 .tabs image{
+  width: 38rpx;
+  height: 27rpx;
+  margin-right: 4rpx;
+}
+.number{
+
+}
+.btn{
+  width: 100%;
+  margin: 35rpx auto;
+  background: #fe4237;
+  color: white;
+  line-height: 80rpx;
+  height: 80rpx;
+  border-radius: 10rpx;
+  text-align: center;
+}
+
+.btn1{
+  width: 100%;
+  margin: 35rpx auto;
+  background: #09bb07;
+  color: white;
+  line-height: 80rpx;
+  height: 80rpx;
+  border-radius: 10rpx;
+  text-align: center;
+}
+.box2{
+  width: 100%;
+  padding: 0 24rpx;
+  text-align: center;
+}
+.msg1{
+  line-height: 70rpx;
+}
+.time text{
+  padding: 0rpx 20rpx;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 60rpx;
+}
+.border{
+  border: 1px solid #989898;
+  border-radius: 10rpx;
+}
+.content{
+  color: #333;
+}
+.searchBox{
+  padding: 10rpx 0;
+  border: 1px solid #989898;
+  border-radius: 10rpx;
+  position: relative;
+}
+.searchBox input{
+  width:70%;
+  padding-left: 20rpx;
+  box-sizing: border-box;
+  height: 60rpx;
+  text-align: left;
+}
+.searchBox text{
+  width: 210rpx;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  -webkit-transform:translateY(-50%);
+  border-left: 1rpx solid #989898;
+}
+
+.list_box{
+  width: 340rpx;
+  position: relative;
+  margin-top: 20rpx;
+  box-shadow: 0px 2px 2px #dddddd;
+  height: auto;
+}
+.list_box:nth-child(odd){
+  float: left;
+}
+.list_box:nth-child(even){
+  float: right;
+}
+.list_box image{
+  width: 100%;
+  height: 520rpx;
+}
+.number_ticket{
+  text-align: left;
+  padding-left: 15rpx;
+  color: #fe4237;
+  line-height: 60rpx;
+}
+.btn_toupiao{
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 100%;
+  position: absolute;
+  right: 15rpx;
+  bottom: 10rpx;
+  border: 1rpx solid #5e15a4;
+  color: #5e15a4;
+  line-height: 90rpx;
+  background: white;
+}
+.msg_person{
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.7);
+  line-height: 50rpx;
+  border-bottom-right-radius: 10rpx;
+  color: white;
+  font-size: 24rpx;
+  text-align: left;
+}
+.msg_person .number_Serial{
+  margin: 0 18rpx;
+}
+.all_number{
+  line-height: 130rpx;
+  color: #333;
+  text-align: center;
+}
+.rule{
+  background: #f9f9f9;
+  padding-left: 38rpx;
+  line-height: 90rpx;
+  border-top: 2rpx dashed #efefef;
+  border-bottom: 1rpx solid #efefef;
+}
+.rule image{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+  display: inline-block;
+  vertical-align: middle;
+
+}
+.rule text{
+  display: inline-block;
+  vertical-align: middle;
+}
+.video_box{
+  padding:14rpx;
+}
+.video_box video{
+  margin: 10rpx auto;
+  width: 100%;
+  height: 400rpx;
+}
+.video_box image{
+  width: 98%;
+}
+.video_box view{
+  font-size: 28rpx;
+  line-height: 1.7;
+}

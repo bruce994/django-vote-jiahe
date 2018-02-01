@@ -1,0 +1,114 @@
+swiper{
+  width: 100%;
+  height: 400rpx;
+}
+page{
+  padding-bottom: 60rpx;
+}
+swiper image{
+  width: 100%;
+  height: 100%;
+}
+.pic1{
+  width: 100%;
+  height: 50rpx;
+}
+.box{
+  width: 700rpx;
+  position: relative;
+  padding: 20rpx 0 45rpx 0;
+  border-bottom: 1rpx solid #c9dae2;
+  margin: 0 auto;
+  font-size: 28rpx;
+}
+.box text{
+  position: absolute;
+  left: 10rpx;
+  top: 30rpx;
+}
+.box input{
+  border:  1rpx solid #9ca9af;
+  width: 495rpx;
+  padding-left: 24rpx;
+  line-height: 60rpx;
+  height: 60rpx;
+  margin-left: 175rpx;
+  border-radius: 30rpx;
+}
+.box textarea{
+  border:  1rpx solid #0079a9;
+  width: 495rpx;
+  padding-left: 24rpx;
+  height: 105rpx;
+  margin-left: 175rpx;
+  border-radius: 30rpx;
+
+}
+picker{
+  display: block;
+  width: 495rpx;
+  margin-left: 175rpx;
+  border:  1rpx solid #0079a9;
+  line-height: 60rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  padding-left:24rpx;
+  box-sizing: border-box;
+}
+.msg{
+  padding-left:175rpx;
+  font-size: 22rpx;
+  color: #701012;
+  margin-top: 40rpx;
+
+}
+.title{
+  line-height: 80rpx;
+  margin-bottom: 24rpx;
+}
+.picbox{
+  width: 120rpx;
+  height: 120rpx;
+  position: relative;
+}
+.newPic{
+  width: 100%;
+  height: 100%;
+}
+.close{
+  position: absolute;
+  width: 38rpx;
+  height: 38rpx;
+  right: -17rpx;
+  top: 0rpx;
+}
+.add{
+  width: 120rpx;
+  height: 120rpx;
+}
+.add,.picbox{
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 40rpx;
+  margin-bottom: 24rpx;
+}
+.msg1{
+  color: #9ca9af;
+  font-size: 29rpx;
+  margin: 60rpx 0 55rpx;
+  text-align: center;
+}
+.btn{
+  width: 710rpx;
+  margin: 0 auto;
+  background: #f67685;
+  color: white;
+  line-height: 100rpx;
+  border-radius: 10rpx;
+  text-align: center;
+}
+.picker{
+
+  width: 300rpx;
+  color: gray;
+}

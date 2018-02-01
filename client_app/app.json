@@ -1,0 +1,55 @@
+{
+  "pages":[
+
+    "pages/index/index",
+    "pages/default/default",
+    "pages/mine/mine",
+    "pages/detail/detail",
+    "pages/pay/pay",
+    "pages/sign/sign",
+    "pages/prize/prize"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#b6b6b6",
+    "selectedColor": "#09BB07",
+    "list": [
+      {
+        "pagePath": "pages/default/default",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/selectedHome.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/sign/sign",
+        "iconPath": "images/sign.png",
+        "selectedIconPath": "images/signSelect.png",
+        "text": "报名"
+      },
+      {
+        "pagePath": "pages/prize/prize",
+        "iconPath": "images/sort.png",
+        "selectedIconPath": "images/selectedSort.png",
+        "text": "奖品"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "iconPath": "images/card.png",
+        "selectedIconPath": "images/selectedCard.png",
+        "text": "榜单"
+      }
+
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+
+}

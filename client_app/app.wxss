@@ -1,0 +1,60 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+page{
+  font-size: 28rpx;
+  background: white;
+  color: #989898;
+}
+view,text,input,textarea{
+  box-sizing: border-box;
+}
+.borderTop{
+  border-top: 1rpx solid #dddddd;
+}
+.borderBottom{
+  border-top: 1rpx solid #dddddd;
+}
+.hidden{
+  display: none;
+}
+
+.message{
+  width: 100%;
+  position: fixed;
+  z-index: 99;
+  line-height: 60rpx;
+  background: rgba(0, 0, 0, 0.5);
+  left: 0;
+  top: 0;
+  color: white;
+  font-size: 24rpx;
+  padding-left: 120rpx;
+}
+.message .title{
+  width: 120rpx;
+  display: block;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  
+}
+.message .message_box{
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.message .message_box view{
+  animation: kf-marque-animation 20s linear infinite;
+  white-space: nowrap;
+}
+@keyframes kf-marque-animation{ 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }

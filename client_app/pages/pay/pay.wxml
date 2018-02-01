@@ -1,0 +1,17 @@
+<image mode="aspectFill" src='{{media}}{{form.fields.image0}}' class="head"></image>
+<view class="name">为{{form.fields.num}}号 {{form.fields.username}} 送钻</view>
+<view class="box" >
+
+  <view wx:for="{{list}}" wx:for-index="idx"  wx:for-item="item"  wx:key="{{item.pk}}" data-id="{{item.pk}}" class="{{item.isCheck?'color2':'color1'}}"  data-idx="{{idx}}" bindtap='check'><text>{{item.fields.title}}</text></view>
+
+</view>
+<view style='clear:both'></view>
+<input placeholder='请输入自定义钻数' type='number' bindinput="inputNumber" style="height:80rpx;padding-top:5px"></input>
+<view class="msg">注：{{ps}}</view>
+<view class="money">支付金额：<text>{{price}}</text>元</view>
+<view class="paytype">
+  <image src='/images/logo.jpg' class="logo"></image>
+  <text>微信支付</text>
+  <icon type="success" size="20"></icon>
+</view>
+<view class="btn" bindtap="goPay">打赏钻石</view>

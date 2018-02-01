@@ -1,0 +1,102 @@
+<!--index.wxml-->
+<view class="message">
+  <text class="title">通知：</text>
+  <view class="message_box">
+    <view>{{vote.fields.message}}</view>
+  </view>
+</view>
+
+
+<swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-dots="true">
+  <block wx:for="{{ad}}" wx:for-index="idx"  wx:for-item="item"  wx:key="{{item.pk}}"  >
+    <swiper-item>
+      <image mode="aspectFill" src="{{media}}{{item.fields.image}}" class="slide-image" />
+    </swiper-item>
+  </block>
+</swiper>
+
+
+
+
+<view wx:if="{{auditd_check==1}}">
+
+  <view class="box1">
+    <view class="tabs">
+      <view>
+        <image src='/images/icon1.png'></image>
+        <text>已报名</text>
+      </view>
+      <view>{{misc.form_num}}</view>
+    </view>
+    <view class="tabs">
+      <view>
+        <image src='/images/icon2.png'></image>
+        <text>累计投票</text>
+      </view>
+      <view>{{misc.form_ticket}}</view>
+    </view>
+    <view class="tabs">
+      <view>
+        <image src='/images/icon3.png'></image>
+        <text>访问量</text>
+      </view>
+      <view class="number">{{vote.fields.view}}</view>
+    </view>
+  </view>
+  <view class="box2">
+    <view class="msg1">活动倒计时</view>
+
+    <view class="time">
+      <text class="border">{{wxTimerList.dtime.day}}</text>
+      <text class="content">天</text>
+      <text class="border">{{wxTimerList.dtime.hour}}</text>
+      <text class="content">时</text>
+      <text class="border">{{wxTimerList.dtime.mini}}</text>
+      <text class="content">分</text>
+      <text class="border">{{wxTimerList.dtime.sec}}</text>
+      <text class="content">秒</text>
+    </view>
+    <view class="btn" bindtap='goSign'>我要报名</view>
+    <view class="searchBox">
+      <input placeholder='请输入编号或姓名' bindinput="inputKeyword"></input>
+      <text  bindtap='goSearch' >搜索</text>
+    </view>
+    <view class="list">
+
+
+      <scroll-view scroll-x = true bindscrolltolower="loadMore" bindscrolltoupper="refesh">
+          <view class="list_box" bindtap='goDetail' wx:for="{{list}}" wx:for-index="idx"  wx:for-item="item"  wx:key="{{item.pk}}" data-id="{{item.pk}}"  >
+            <image src='{{media}}{{item.fields.image0}}' mode='aspectFill'></image>
+            <view class="number_ticket">{{item.fields.ticket}}票</view>
+            <view class="msg_person">
+              <text class="number_Serial">{{item.fields.num}}号</text>
+              <text style='margin:0 5px;'>{{item.fields.username}}  </text>
+            </view>
+            <view class="btn_toupiao">投票</view>
+          </view>
+      </scroll-view>
+      <view style='clear:both'></view>
+    </view>
+  </view>
+
+  <!--
+  <view class="all_number">3条记录 1/1 页</view>
+  -->
+
+  <view class="box2">
+   <view class="btn1" bindtap='goSign' bindtap='goMore' wx:if="{{isMore}}" >点击加载更多</view>
+  </view>
+
+</view>
+
+
+
+<view class="rule">
+  <image src='/images/icon4.png'></image>
+  <text>活动规则</text>
+</view>
+<view class="video_box">
+  <import src="../../wxParse/wxParse.wxml"/>
+  <template is="wxParse" data="{{wxParseData:html_content.nodes}}"/>
+</view>

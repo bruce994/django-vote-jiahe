@@ -1,0 +1,160 @@
+
+.title text{
+  padding: 0 40rpx 12rpx 40rpx;
+  border-bottom: 1rpx solid blue;
+}
+.listbox{
+  background: white;
+  padding: 24rpx;
+
+}
+.match-list{
+  width: 340rpx;
+  color: #666666;
+  font-size: 28rpx;
+  background: white;
+  display: inline-block;
+  vertical-align: top;
+  margin-bottom: 40rpx;
+}
+.match-list:nth-child(even){
+  margin-left: 22rpx;
+}
+.minPic{
+  width:100%;
+  height: 200rpx;
+}
+.macth{
+  width: 100%;
+  font-size: 28rpx;
+  background: white;
+  padding: 0rpx 0rpx 0 24rpx;
+  height: 100rpx;
+  white-space: nowrap;
+  box-sizing: border-box;
+  border-bottom: 2rpx solid #eeeeee;
+}
+.macth view{
+  margin-right: 40rpx;
+  line-height: 93rpx;
+  display: inline-block;
+  vertical-align: middle;
+  box-sizing: border-box;
+
+}
+.blueColor{
+  color: #396bd0;
+  border-bottom: 4rpx solid #396bd0;
+}
+
+.type{
+  width: 100%;
+  white-space: nowrap;
+  font-size: 28rpx;
+  background: white;
+  padding: 24rpx 0rpx 24rpx 24rpx;
+  height: 110rpx;
+  box-sizing: border-box;
+}
+.type view{
+  margin-right: 10rpx;
+  line-height: 60rpx;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0 30rpx;
+  border-radius: 10rpx;
+}
+.grayBg{
+  background: #f5f5f5;
+  color: #333333;
+}
+.blueBg{
+  background: #396bd0;
+  color: white;
+}
+.searchbox{
+  padding:  24rpx;
+  box-sizing: border-box;
+  width: 100%;
+  background: white;
+  margin-top: 20rpx;
+  position: relative;
+  margin-bottom: 3rpx;
+}
+.searchbox view{
+  width: 100%;
+  background: #f2f2f2;
+  border-radius: 30rpx;
+  position: relative;
+}
+.search{
+  width: 31rpx;
+  height: 34rpx;
+  position: absolute;
+  left: 20rpx;
+  top: 10rpx;
+
+}
+.searchbox input{
+  line-height: 65rpx;
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 60rpx;
+  font-size: 24rpx;
+}
+.listbox .messagebox .icon1{
+  width: 24rpx;
+  height: 24rpx;
+}
+.listbox .messagebox image,.listbox .messagebox text{
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 20rpx;
+  color: #d6d6d6;
+}
+.listbox .messagebox image{
+  margin-right: 5rpx;
+}
+.listbox .messagebox text{
+  width: 170rpx;
+  margin-right: 10rpx;
+}
+.listbox .name{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+}
+
+
+.box2{
+  width: 100%;
+  padding: 0 24rpx;
+  text-align: center;
+}
+
+
+
+
+.searchBox{
+  padding: 10rpx 0;
+  border: 1px solid #989898;
+  border-radius: 10rpx;
+  position: relative;
+}
+.searchBox input{
+  width:70%;
+  padding-left: 20rpx;
+  box-sizing: border-box;
+  height: 60rpx;
+  text-align: left;
+}
+.searchBox text{
+  width: 210rpx;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  -webkit-transform:translateY(-50%);
+  border-left: 1rpx solid #989898;
+}

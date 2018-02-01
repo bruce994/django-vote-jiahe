@@ -1,0 +1,93 @@
+.head{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 100%;
+  margin:0rpx auto 25rpx;
+ 
+}
+page{
+  text-align: center;
+  padding:65rpx 30rpx 0 30rpx;
+   box-sizing: border-box;
+}
+.name{
+  color: black;
+}
+.name text{
+  color: #ff4727;
+}
+.box{
+  width: 100%;
+  margin-top: 70rpx;
+}
+.box view{
+  width: 31%;
+  line-height: 100rpx;
+  float: left;
+  margin-right: 3.5%;
+  margin-top: 20rpx;
+}
+.box view:nth-child(3){
+  margin-right: 0;
+}
+.box view text{
+  font-size: 36rpx;
+  font-style:oblique;
+  margin-right: 5rpx;
+}
+.color2{
+  background: #fe4237;
+  color: white;
+}
+.color1{
+  border: 1rpx solid #fe4237;
+  color: #fe4237;
+}
+.msg{
+  color: black;
+  margin-top: 30rpx;
+  margin-bottom: 20rpx;
+}
+.money text{
+  color: red;
+}
+input{
+  width: 100%;
+  border: 1rpx solid #999999;
+  text-align: left;
+  padding-left: 24rpx;
+  margin: 50rpx auto;
+  height: 60rpx;
+}
+.logo{
+  width: 52rpx;
+  height: 50rpx;
+}
+icon{
+  right: 30rpx;
+  position: absolute;
+  top: 50%;
+  -webkit-transform:translateY(-50%)
+}
+view.paytype{
+  width: 100%;
+  margin: 60rpx -30rpx 40rpx;
+  padding: 10rpx 30rpx;
+  box-sizing: content-box;
+  text-align: left;
+  position: relative;
+} 
+.paytype text,.paytype image{
+  display: inline-block;
+  vertical-align: middle;
+  margin: 10rpx;
+}
+.btn{
+  width: 630rpx;
+  background: #44b549;
+  color: white;
+  text-align: center;
+  line-height: 90rpx;
+  margin: 0 auto;
+  border-radius: 10rpx;
+}

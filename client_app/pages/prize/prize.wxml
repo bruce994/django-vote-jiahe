@@ -1,0 +1,9 @@
+
+<view class="rule">
+  <image src='/images/icon4.png'></image>
+  <text>活动奖品</text>
+</view>
+<view class="video_box">
+  <import src="../../wxParse/wxParse.wxml"/>
+  <template is="wxParse" data="{{wxParseData:html_content.nodes}}"/>
+</view>

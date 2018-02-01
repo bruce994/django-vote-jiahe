@@ -1,0 +1,30 @@
+
+<view class="message">
+  <text class="title">通知：</text>
+  <view class="message_box">
+    <view>{{vote.message}}</view>
+  </view>
+</view>
+
+
+<swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-dots="true">
+  <block wx:for="{{ad}}" wx:for-index="idx"  wx:for-item="item"  wx:key="{{item.pk}}"  >
+    <swiper-item>
+      <image mode="aspectFill" src="{{media}}{{item.fields.image}}" class="slide-image" />
+    </swiper-item>
+  </block>
+</swiper>
+
+
+<view class="box">
+  <view class="title">实时榜单</view>
+
+    <view class="list" bindtap='goDetail'   wx:for="{{list}}" wx:for-index="idx"  wx:for-item="item"  wx:key="{{item.pk}}" data-id="{{item.pk}}" >
+      <image mode="aspectFill" src='{{media}}{{item.fields.image0}}' class="head"></image>
+      <text class="name">{{item.fields.username}} {{item.fields.num}}号</text>
+      <text class="number_ticket">票数 {{item.fields.ticket}}</text>
+      <text class="number_mark">{{idx + 1}}</text>
+    </view>
+
+</view>

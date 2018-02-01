@@ -1,0 +1,62 @@
+<!--index.wxml-->
+
+<swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-dots="true">
+  <block wx:for="{{ad}}" wx:for-index="idx"  wx:for-item="item"  wx:key="{{item.pk}}"  >
+    <swiper-item>
+      <image mode="aspectFill" src="{{media}}{{item.fields.image}}" class="slide-image" />
+    </swiper-item>
+  </block>
+</swiper>
+
+
+<view class="box">
+  <text>选手姓名</text>
+  <input type="text" placeholder='请输入姓名或昵称'  bindinput="inputUsername" ></input>
+</view>
+
+<!--
+<view class="box">
+  <text>手机号码</text>
+  <input type="number" placeholder='请输入手机号'></input>
+</view>
+<view class="box">
+  <text>参赛宣言</text>
+  <textarea placeholder='一句话描述参赛宣言'></textarea>
+</view>
+<view class="box">
+  <text>参赛组别</text>
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+    <view class="picker">
+      {{array[index]}}
+    </view>
+  </picker>
+</view>
+<view class="box">
+  <text>年龄</text>
+  <input type="number" placeholder='请输入年龄'></input>
+</view>
+<view class="box">
+  <text>爱好</text>
+  <input type="number" placeholder='请输入爱好'></input>
+</view>
+<view class="box">
+  <text>视频地址</text>
+  <input type="text" placeholder='请输入视频地址'></input>
+  <view class="msg">至腾讯视频页面，“分享”-“复制flash地址”</view>
+</view>
+-->
+
+
+<view class="box">
+  <view class="title">请上次1-5张图片，第一张为封面图。</view>
+
+  <view class="picbox"  wx:for="{{image}}" wx:for-index="idx"  wx:for-item="item"  wx:key="{{item}}" >
+    <image src='{{media}}{{item}}' class="newPic"></image>
+    <image src='/images/delete.png' class="close" bindtap='delPic' data-idx="{{idx}}" ></image>
+  </view>
+
+  <image src='/images/add.png' class="add" bindtap='addPic'></image>
+</view>
+<view class="msg1">报名下方提示（不填则不显示）</view>
+<view class="btn" bindtap='goSign' >提交报名</view>

@@ -1,0 +1,22 @@
+<view class="box2">
+  <view class="searchBox">
+    <input type="number" placeholder='请输入编号直接进入投票' bindinput="inputKeyword"></input>
+    <text  bindtap='goSearch' >搜索</text>
+    </view>
+</view>
+
+
+<view class="listbox">
+  <scroll-view scroll-x = true bindscrolltolower="loadMore" bindscrolltoupper="refesh">
+    <view class="match-list" bindtap='bindViewTap' wx:for="{{list}}" wx:for-index="idx"  wx:for-item="item"  wx:key="{{item.pk}}" data-mid="{{item.pk}}" data-id="{{item.fields.mid}}">
+      <image mode='aspectFill' src='{{media}}{{item.fields.image}}' class="minPic"></image>
+      <text class="name">编号:{{item.pk}} {{item.fields.title}}</text>
+      <view class="messagebox">
+        <image src='../../images/time.png' class="icon1"></image>
+        <text>{{item.fields.pub_date}}</text>
+        <image src='../../images/view.png' class="icon1"></image>
+        <text style="width:80rpx;"> {{item.fields.view}}</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>

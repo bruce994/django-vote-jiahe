@@ -1,0 +1,127 @@
+page{
+  background: #eeeeee;
+}
+swiper{
+  width: 100%;
+  height: 400rpx;
+  box-sizing: border-box;
+}
+swiper image{
+  width:100%;
+  height: 100%;
+}
+swiper image pic{
+  width:100%;
+  height: auto;
+}
+.box{
+  padding: 0 24rpx;
+  background: #f9f9f9;
+  position: relative;
+  height: 105rpx;
+}
+.head{
+ width:65rpx;
+ height:60rpx;
+  border-radius: 100%;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+}
+.name{
+  left:95rpx;
+  color: #030303;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+}
+.box1{
+  position: absolute;
+  right: 0;
+   top: 50%;
+  -webkit-transform: translateY(-50%);
+}
+.picbox{
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  margin: 0 30rpx;
+  font-size: 24rpx;
+}
+.picbox image{
+  width: 27rpx;
+  height: 24rpx;
+  margin-right: 3rpx;
+  display: inline-block;
+  vertical-align: middle;
+}
+.picbox text{
+  padding: 5rpx 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+.title{
+  padding-bottom: 12rpx;
+}
+.banna1{
+  width: 100%;
+  height: 380rpx;
+}
+.box3{
+  padding: 24rpx;
+  width: 100%;
+}
+.btn{
+  width: 100%;
+  background: #fe4237;
+  line-height: 75rpx;
+  color: white;
+  border-radius: 5rpx;
+  margin: 30rpx auto 200rpx;
+  text-align: center;
+}
+.box4{
+  padding: 25rpx 45rpx;
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+}
+.btn_box{
+  width: 200rpx;
+  line-height: 75rpx;
+  background: white;
+  text-align: center;
+  font-size: 24rpx;
+  border-radius: 5rpx;
+}
+.btn_box image{
+  width: 32rpx;
+  height: 26rpx;
+  margin-right: 5rpx;
+}
+.btn_box image,.btn_box text{
+  display: inline-block;
+  vertical-align: middle;
+}
+.left{
+  float: left;
+}
+.right{
+  float: right;
+}
+.btn_send{
+  position: absolute;
+  top: -50rpx;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  text-align: center;
+  color: white;
+  font-size: 24rpx;
+}
+.btn_send image{
+  width: 114rpx;
+  height: 114rpx;
+}
