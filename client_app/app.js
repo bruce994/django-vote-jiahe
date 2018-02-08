@@ -1,6 +1,12 @@
 //app.js
+
+var config = require('utils/config');
+var utils = require('utils/util.js');
+
 App({
   onLaunch: function () {
+
+
     // 展示本地存储能力
     var index = wx.getStorageSync('index') || []
     index.unshift(Date.now())
@@ -31,7 +37,9 @@ App({
           })
         }
       }
-    })
+    });
+
+
   },
   globalData: {
     userInfo: null

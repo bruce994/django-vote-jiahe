@@ -21,7 +21,7 @@ import urllib.request
 import django.core.files
 from django.conf import settings
 # Create your views here.
-from .models import Template,Vote,Ad,Form,Gift,Ordering,Pay,Record,Userinfo
+from .models import Template,Vote,Ad,Form,Gift,Ordering,Pay,Record,Userinfo,Setting
 
 from random import randint
 from vote import help
@@ -78,7 +78,7 @@ def index(request):
     ad = Ad.objects.filter(vid = vid).order_by('-pub_date')
     ad_json  = serializers.serialize('json',ad)
 
-    data = '{"auditd_check":1,"misc":'+json.dumps(data1)+',"ad":'+ad_json+',"vote":'+vote_json[1:-1]+',"list":'+latest_list_json+'}'
+    data = '{"auditd_check":0,"misc":'+json.dumps(data1)+',"ad":'+ad_json+',"vote":'+vote_json[1:-1]+',"list":'+latest_list_json+'}'
     return HttpResponse(data, content_type='json')
 
 
@@ -398,6 +398,51 @@ def wxpay(request):
     return JsonResponse({'errcode': 40001, 'errmsg': '请求支付失败'})
 
 
+
+
+
+@csrf_exempt
+def wxpay2(request):
+    #data = {
+    #    'appid': 'wx76df4a73c8ecfc06',
+    #    'mch_id': '1486279882',
+    #    'nonce_str': wxpayClass.get_nonce_str(),
+    #    'body': '测试',                              # 商品描述
+    #    'out_trade_no': str(int(time.time())),       # 商户订单号
+    #    'total_fee': '1',
+    #    'spbill_create_ip': '123.12.12.123',
+    #    'notify_url': 'https://django2.yy.lanrenmb.com/vote/wxpay_notify/',
+    #    'attach': '{"msg": "自定义数据"}',
+    #    'trade_type': 'JSAPI',
+    #    'openid': 'oBxj00HJ_LpE7Mgw1A6OaB_cSWE0'
+    #}
+    #merchant_key = 'd32831100d1bf387d8faec783fde3888'
+    mid = request.POST.get('mid',0)
+    setting = Setting.objects.get(mid=mid)
+    data = {
+        'appid': setting.appId,
+        'mch_id': setting.mch_id,
+        'nonce_str': wxpayClass.get_nonce_str(),
+        'body': request.POST.get('body',''),                              # 商品描述
+        'out_trade_no': request.POST.get('out_trade_no',''),       # 商户订单号
+        'total_fee': request.POST.get('total_fee',1),
+        'spbill_create_ip': help.get_client_ip(request),
+        'notify_url': setting.notify_url,
+        'attach': request.POST.get('attach',''),
+        'trade_type': request.POST.get('trade_type',''),
+        'openid': request.POST.get('openid','')
+    }
+    merchant_key = setting.merchant_key 
+
+    wxpay = wxpayClass.WxPay(merchant_key, **data)
+    pay_info = wxpay.get_pay_info()
+    if pay_info:
+        return JsonResponse(pay_info)
+    return JsonResponse({'errcode': 40001, 'errmsg': '请求支付失败'})
+
+
+
+
 @csrf_exempt
 def wxpay_notify(request):
         data = wxpayClass.xml_to_dict(request.body)
@@ -454,6 +499,12 @@ def wxpay_notify(request):
         return HttpResponse(data, content_type='text/xml')
 
 
+def setting(request):
+    mid = request.GET.get('mid',0)
+    setting = Setting.objects.filter(mid=mid)[:1]
+    setting_json  = serializers.serialize('json',setting)
+    data = setting_json[1:-1]
+    return HttpResponse(data, content_type='json')
 
 
 @csrf_exempt
@@ -463,5 +514,12 @@ def api_weixin(request):
         result = response.read()
         return HttpResponse(result, content_type='json')
 
-
-
+@csrf_exempt
+def api_weixin2(request):
+    url = request.POST.get("url","")
+    mid = request.GET.get('mid',0)
+    setting = Setting.objects.get(mid=mid)
+    url = url +  '&appid=' + setting.appId + '&secret=' + setting.appSecret
+    with urllib.request.urlopen(url) as response:
+        result = response.read()
+        return HttpResponse(result, content_type='json')

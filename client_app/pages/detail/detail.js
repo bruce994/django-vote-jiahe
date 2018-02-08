@@ -71,8 +71,8 @@ Page({
             success:function(resLogin){
                 var code = resLogin.code; //返回code
                 wx.request({
-                      url: config.api.api_weixin,
-                      data: {url:'https://api.weixin.qq.com/sns/jscode2session?appid=' + config.appId + '&secret=' + config.secret + '&js_code=' + code + '&grant_type=authorization_code'},
+                      url: config.api.api_weixin2+"?mid="+mid,
+                      data: {url:'https://api.weixin.qq.com/sns/jscode2session?js_code=' + code + '&grant_type=authorization_code'},
                       header: {
                         "Content-Type": "application/x-www-form-urlencoded"
                        },

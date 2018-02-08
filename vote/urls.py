@@ -6,6 +6,7 @@ urlpatterns = [
     url(r'^detail/?$', views.detail, name='detail'),
     url(r'^gift/?$', views.gift, name='gift'),
     url(r'^api_weixin/$', views.api_weixin, name='api_weixin'),
+    url(r'^api_weixin2/$', views.api_weixin2, name='api_weixin2'),
     url(r'^vote_post/$', views.vote_post, name='vote_post'),
     url(r'^rank/$', views.rank, name='rank'),
     url(r'^sign/$', views.sign, name='sign'),
@@ -19,8 +20,7 @@ urlpatterns = [
     url(r'^ordering_post/$', views.ordering_post, name='ordering_post'),
     url(r'^ordering_update/(?P<id>[0-9]+)/$', views.ordering_update, name='ordering_update'),
     url(r'^wxpay/$', views.wxpay, name='wxpay'),
+    url(r'^wxpay2/$', views.wxpay2, name='wxpay2'),
     url(r'^wxpay_notify/$', views.wxpay_notify, name='wxpay_notify'),
+    url(r'^setting/$', views.setting, name='setting'),
 ]
-
-
-

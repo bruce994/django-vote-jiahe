@@ -28,21 +28,23 @@ Page({
     media:config.api.url+"/media/",
   },
   onLoad: function (options) {
+    var that = this;
     vid = options.vid;
     mid = options.mid;
     let g_vid = vid;  //定义全局变量
     let g_mid = mid;  //定义全局变量
     app.g_vid = g_vid;
     app.g_mid = g_mid;
+
   },
 
   onReady:function(){
-
 
   },
 
       onShow: function() {
         var that = this;
+
         that.setData({
           list:[],
         });
@@ -87,13 +89,14 @@ Page({
     login: function(config){
       var that = this;
 
+
       //登陆
       wx.login({
           success:function(resLogin){
               var code = resLogin.code; //返回code
               wx.request({
-                    url: config.api.api_weixin,
-                    data: {url:'https://api.weixin.qq.com/sns/jscode2session?appid=' + config.appId + '&secret=' + config.secret + '&js_code=' + code + '&grant_type=authorization_code'},
+                    url: config.api.api_weixin2+"?mid="+mid,
+                    data: {url:'https://api.weixin.qq.com/sns/jscode2session?js_code=' + code + '&grant_type=authorization_code'},
                     header: {
                       "Content-Type": "application/x-www-form-urlencoded"
                      },

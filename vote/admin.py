@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Template,Vote,Form,Gift,Userinfo,Record,Ordering,Pay,Ad
+from .models import Template,Vote,Form,Gift,Userinfo,Record,Ordering,Pay,Ad,Setting
 
 from django.forms import TextInput, Textarea
 from django.db import models
@@ -218,6 +218,26 @@ class AdAdmin(admin.ModelAdmin):
             return qs.filter(mid=request.user.id)
 
 
+class SettingAdmin(admin.ModelAdmin):
+    list_per_page = 20
+    list_display = ('mid_name','appId','appSecret','mch_id','merchant_key','notify_url')
+    exclude = ('mid',) #隐藏字段
+    def save_model(self, request, obj, form, change):
+        if not change : #添加
+            obj.mid = request.user.id  #获取登陆用户
+        super().save_model(request, obj, form, change)
+
+     #设置只显示当前登录用户填报条目（对于管理员显示全部模型条目）
+    def get_queryset(self, request):
+        qs = super(SettingAdmin, self).get_queryset(request)
+        if request.user.is_superuser:
+            return qs
+        else:
+            return qs.filter(mid=request.user.id)
+
+    def has_add_permission(self, request):
+        	return False if self.model.objects.count() > 0 else super().has_add_permission(request)
+
 
 class MyAdminSite(AdminSite):
     # Text to put at the end of each page's <title>.
@@ -231,6 +251,7 @@ admin_site = MyAdminSite()
 
 
 
+admin.site.register(Setting, SettingAdmin)
 admin.site.register(Ad, AdAdmin)
 admin.site.register(Template, TemplateAdmin)
 admin.site.register(Vote, VoteAdmin)

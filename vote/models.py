@@ -382,3 +382,27 @@ class Pay(models.Model):
     class Meta:
         verbose_name = "支付记录"
         verbose_name_plural = "9.支付记录"
+
+
+class Setting(models.Model):
+    mid  = models.IntegerField('会员ID',default=0)
+    appId = models.CharField('AppID(小程序ID',max_length=30,default='',blank=True)
+    appSecret =  models.CharField('AppSecret(小程序密钥)',max_length=80,default='',blank=True)
+    mch_id =  models.CharField('商户ID',max_length=20,default='',blank=True)
+    merchant_key =  models.CharField('商户支付密钥',max_length=80,default='',blank=True)
+    notify_url =  models.CharField('回调支付url地址',max_length=300,default='',blank=True)
+
+    def mid_name(self):
+        tmp = User.objects.get(pk=self.mid)
+        return  tmp.username
+    mid_name.allow_tags = True
+    mid_name.short_description = '会员'
+
+    class Meta:
+        verbose_name = "系统参数设置"
+        verbose_name_plural = "0.系统参数设置"
+
+
+
+
+
