@@ -105,7 +105,7 @@ class Form(models.Model):
     mid  = models.IntegerField('会员ID',default=0)
     vid  = models.ForeignKey(Vote,verbose_name='活动')
     openid = models.CharField("微信ID",max_length=200,default='',blank=True,db_index=True)
-    username = models.CharField('姓名',max_length=30,default='')
+    username = models.CharField('姓名',max_length=30,default='',blank=True)
     tel = models.CharField('电话',max_length=30,default='',blank=True)
     #image0 = FileBrowseField("照片1", max_length=200, directory="uploads/", extensions=['.jpg','.jpeg','.gif','.png','.tif','.tiff'], blank=True, null=True)
     image_path = time.strftime('images/%Y/%m/%d')
@@ -124,6 +124,13 @@ class Form(models.Model):
     ticket = models.IntegerField('票数',default=0)
     pub_date = models.DateTimeField('发布时间',auto_now_add=True)
     status = models.IntegerField('状态',default=1,choices=[(0,"禁用"),(1,"启用")])
+    #batchFile = FileBrowseField("批量上传照片（zip格式）", max_length=200, directory="uploads/", extensions=['.zip'],default='', blank=True)
+    image_path = time.strftime('images/%Y/%m/%d')
+    batchFile = models.FileField("批量上传照片（zip格式）", max_length=200,upload_to=help.PathAndRename(image_path),blank=True, default='')
+
+
+
+
 
     def p_image(self):
         url =  '<img src="%s%s" width="%d" height="%d"/>' % (settings.MEDIA_URL,self.image0,50,80)

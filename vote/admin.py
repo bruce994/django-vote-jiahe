@@ -1,8 +1,16 @@
+import sys,os,os.path,time
 from django.contrib import admin
 
 # Register your models here.
 from .models import Template,Vote,Form,Gift,Userinfo,Record,Ordering,Pay,Ad,Setting
-
+from .forms import FormForm #by wang
+import zipfile
+import shutil
+from django.db.models import Max
+from django.utils.encoding import escape_uri_path
+import urllib
+from django.utils import timezone
+from random import randint
 from django.forms import TextInput, Textarea
 from django.db import models
 
@@ -10,9 +18,9 @@ from django.core.urlresolvers import reverse
 from tinymce.widgets import TinyMCE
 from django.contrib.auth.admin import UserAdmin
 
-
 from django.contrib.admin import AdminSite
 from django.utils.translation import ugettext_lazy
+from django.contrib import messages
 
 class TemplateAdmin(admin.ModelAdmin):
     list_per_page = 20
@@ -40,6 +48,7 @@ class VoteAdmin(admin.ModelAdmin):
 
 
 class FormAdmin(admin.ModelAdmin):
+    form = FormForm #自定义Widget
     list_per_page = 20
     list_display = ('username','mid_name','wx_name','num','ticket','tel','p_image','vid','status_name','pub_date')
     search_fields = ['username']
@@ -47,7 +56,45 @@ class FormAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         if not change : #添加
             obj.mid = request.user.id  #获取登陆用户
-        super().save_model(request, obj, form, change)
+        obj.save()
+        id = obj.id
+        nums = Form.objects.filter(vid = obj.vid_id).aggregate(Max('num'))
+        if nums['num__max'] is None:
+            num = 1
+        else:
+            num = nums['num__max']
+        if obj.batchFile :
+            rand = ''.join(["%s" % randint(0, 9) for num in range(0, 16)])   #随机数
+            unziptodir = time.strftime('media/images/%Y/%m/%d/') + str(rand)
+            zipfilename = 'media/' + str(obj.batchFile)
+            if not os.path.exists(unziptodir): os.mkdir(unziptodir, 777)
+            zfobj = zipfile.ZipFile(zipfilename)
+            querysetlist=[]
+            for name in zfobj.namelist():
+                name = name.replace('\\','/')
+                if name.endswith('/'):
+                    os.mkdir(os.path.join(unziptodir, name))
+                else:
+                    ext_filename = os.path.join(unziptodir, name)
+                    ext_dir= os.path.dirname(ext_filename)
+                    if not os.path.exists(ext_dir) : os.mkdir(ext_dir,777)
+                    outfile = open(ext_filename, 'wb')
+                    outfile.write(zfobj.read(name))
+                    outfile.close()
+
+                    new_name =  ext_filename.encode('cp437').decode('utf-8') #中文
+                    os.rename(ext_filename,new_name)
+
+                    username = new_name[new_name.rfind("/")+1:]
+                    username = ('.').join(username.split('.')[:-1])
+
+                    num = num + 1
+                    querysetlist.append(Form(mid=obj.mid,num=num,username=username,image0=new_name.replace('media/',''),ticket=obj.ticket,pub_date=timezone.now(),status=obj.status,vid_id=obj.vid_id))
+            Form.objects.bulk_create(querysetlist)
+
+            Form.objects.filter(id=id).delete()
+            messages.success(request, '导入成功!')
+        #super().save_model(request, obj, form, change)
      #设置只显示当前登录用户填报条目（对于管理员显示全部模型条目）
     def get_queryset(self, request):
         qs = super(FormAdmin, self).get_queryset(request)
